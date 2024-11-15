@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Shield, Users, Heart, LockKeyhole, Medal } from 'lucide-react';
 
 const Hero = () => {

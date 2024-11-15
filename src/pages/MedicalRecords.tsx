@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { FileText, Plus, User, Calendar, Stethoscope } from 'lucide-react';
 
 const MedicalRecords = () => {
