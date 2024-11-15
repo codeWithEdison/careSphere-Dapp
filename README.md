@@ -1,6 +1,6 @@
 # 🏥 CareSphere - Decentralized Healthcare Records
 
-![CareSphere Banner](![Banner](image.png))
+![CareSphere Banner](image.png)
 
 ## 🌟 Overview
 
