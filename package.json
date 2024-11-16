@@ -11,13 +11,17 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@web3-react/core": "^8.2.3",
+    "@web3-react/injected-connector": "^6.0.7",
     "autoprefixer": "^10.4.20",
+    "ethers": "^5.7.2",
     "lucide-react": "^0.459.0",
     "postcss": "^8.4.49",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
-    "tailwindcss": "^3.4.15"
+    "tailwindcss": "^3.4.15",
+    "web3": "^4.15.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

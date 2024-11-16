@@ -1,10 +1,12 @@
-import  { useState } from 'react';
-import { Menu, X, Heart, FileText, Shield, UserPlus } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X, Heart, FileText, Shield, UserPlus, LogOut } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useWeb3 } from '../contexts/Web3Context';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { account, connectWallet, disconnectWallet, isLoading } = useWeb3();
 
   const links = [
     { path: '/', label: 'Home', icon: Heart },
@@ -14,6 +16,10 @@ const Navbar = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
+
+  const shortenAddress = (address: string) => {
+    return `${address.slice(0, 6)}...${address.slice(-4)}`;
+  };
 
   return (
     <nav className="bg-white shadow-lg fixed w-full z-50">
@@ -38,9 +44,29 @@ const Navbar = () => {
                 {label}
               </Link>
             ))}
-            <button className="bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary">
-              Connect Wallet
-            </button>
+            
+            {account ? (
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-600">
+                  {shortenAddress(account)}
+                </span>
+                <button 
+                  onClick={disconnectWallet}
+                  className="flex items-center bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                >
+                  <LogOut className="h-4 w-4 mr-1" />
+                  Disconnect
+                </button>
+              </div>
+            ) : (
+              <button 
+                onClick={connectWallet}
+                disabled={isLoading}
+                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary disabled:opacity-50"
+              >
+                {isLoading ? 'Connecting...' : 'Connect Wallet'}
+              </button>
+            )}
           </div>
 
           <div className="md:hidden flex items-center">
@@ -69,9 +95,29 @@ const Navbar = () => {
                 {label}
               </Link>
             ))}
-            <button className="w-full bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary mt-2">
-              Connect Wallet
-            </button>
+            
+            {account ? (
+              <div className="space-y-2 px-3 py-2">
+                <div className="text-sm text-gray-600">
+                  {shortenAddress(account)}
+                </div>
+                <button 
+                  onClick={disconnectWallet}
+                  className="w-full flex items-center justify-center bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                >
+                  <LogOut className="h-4 w-4 mr-1" />
+                  Disconnect
+                </button>
+              </div>
+            ) : (
+              <button 
+                onClick={connectWallet}
+                disabled={isLoading}
+                className="w-full bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary mt-2 disabled:opacity-50"
+              >
+                {isLoading ? 'Connecting...' : 'Connect Wallet'}
+              </button>
+            )}
           </div>
         </div>
       )}
