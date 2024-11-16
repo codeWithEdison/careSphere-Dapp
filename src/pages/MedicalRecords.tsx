@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   FileText, Plus, User, Calendar, Stethoscope, AlertCircle, 
-  Loader, X, Search, Filter, RefreshCw 
+  Loader, X, Search, RefreshCw 
 } from 'lucide-react';
 import { useWeb3 } from '../contexts/Web3Context';
 
@@ -15,7 +15,7 @@ interface MedicalRecord {
 }
 
 const MedicalRecords = () => {
-  const { contract, account, isLoading: walletLoading } = useWeb3();
+  const { contract, account } = useWeb3();
   const [showAddModal, setShowAddModal] = useState(false);
   const [records, setRecords] = useState<MedicalRecord[]>([]);
   const [loading, setLoading] = useState(false);

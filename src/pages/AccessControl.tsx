@@ -12,7 +12,7 @@ interface Doctor {
 }
 
 const AccessControl = () => {
-  const { contract, account, isLoading } = useWeb3();
+  const { contract, account } = useWeb3();
   const [doctorAddress, setDoctorAddress] = useState('');
   const [doctors, setDoctors] = useState<Doctor[]>([]);
   const [loading, setLoading] = useState(false);

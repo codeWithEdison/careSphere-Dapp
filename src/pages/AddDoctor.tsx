@@ -4,7 +4,7 @@ import { useWeb3 } from '../contexts/Web3Context';
 import { ethers } from 'ethers';
 
 const AddDoctor = () => {
-  const {contract, account,isLoading} = useWeb3();
+  const {contract, account} = useWeb3();
   const [formData, setFormData] = useState({
     address: '',
     name: '',
